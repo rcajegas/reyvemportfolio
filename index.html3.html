@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reyvem Johnson C. | Computer Engineer Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #111831;
+      --panel: rgba(255, 255, 255, 0.06);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #eef2ff;
+      --muted: #b8c2e0;
+      --accent: #5eead4;
+      --accent-2: #60a5fa;
+      --gold: #fbbf24;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max: 1150px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(94,234,212,0.14), transparent 25%),
+        linear-gradient(180deg, #0a0f1d 0%, #0b1020 45%, #09111c 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 15, 29, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      transition: 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 88px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(94, 234, 212, 0.08);
+      border: 1px solid rgba(94, 234, 212, 0.25);
+      color: var(--accent);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 680px;
+      font-size: 1.06rem;
+      margin-bottom: 26px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #06101b;
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.16);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .highlight {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight h3 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      color: var(--gold);
+    }
+
+    .highlight p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -40px;
+      top: -40px;
+      background: radial-gradient(circle, rgba(94,234,212,0.25), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .badge-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mini-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .mini-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    section {
+      padding: 28px 0 56px;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 2vw, 2.4rem);
+      margin-bottom: 12px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .panel p,
+    .panel li {
+      color: var(--muted);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .skill-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(96,165,250,0.1);
+      border: 1px solid rgba(96,165,250,0.22);
+      color: #dbeafe;
+      font-size: 0.92rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 18px;
+    }
+
+    .timeline-item .meta {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .project-card .tag {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.84rem;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .project-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .contact-card {
+      text-align: center;
+      padding: 34px 24px;
+      background: linear-gradient(135deg, rgba(94,234,212,0.12), rgba(96,165,250,0.12));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: 10px auto 22px;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 24px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">REYVEM JOHNSON C.</a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Engineering Portfolio • Drone Systems • Solar Technology</div>
+          <h1>Hi, <br>I'm <span>Reyvem Johnson C.</span><br>A Computer Engineer</h1>
+          <p>
+            I build practical engineering solutions that combine <strong>embedded systems</strong>,
+            <strong>automation</strong>, <strong>drone technology</strong>, and <strong>solar-powered design</strong>.
+            My goal is to contribute to a forward-thinking company where I can help create efficient,
+            reliable, and real-world technologies that solve meaningful problems.
+          </p>
+          <div class="cta-group">
+            <a href="#contact" class="btn btn-primary">Hire Me</a>
+            <a href="#projects" class="btn btn-secondary">View Projects</a>
+          </div>
+
+          <div class="highlights">
+            <div class="highlight">
+              <h3>Drone</h3>
+              <p>Hands-on experience in UAV concepts, system integration, and engineering applications.</p>
+            </div>
+            <div class="highlight">
+              <h3>Solar</h3>
+              <p>Knowledge of solar-powered solutions, energy efficiency, and sustainable design thinking.</p>
+            </div>
+            <div class="highlight">
+              <h3>Engineer</h3>
+              <p>Focused on technical problem-solving, documentation, prototyping, and field-ready systems.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="badge-stack">
+            <span class="badge">Computer Engineering</span>
+            <span class="badge">Drone Systems</span>
+            <span class="badge">Solar Technology</span>
+            <span class="badge">Embedded Projects</span>
+          </div>
+          <h2 class="card-title">Professional Snapshot</h2>
+          <p class="card-text">
+            Entry-level engineer with a strong interest in intelligent systems, renewable energy integration,
+            and applied electronics. Prepared to support design, testing, deployment, and continuous improvement
+            across technical projects.
+          </p>
+          <div class="mini-grid">
+            <div class="mini-box">
+              <strong>Core Focus</strong>
+              Embedded systems, electronics, and control-based design.
+            </div>
+            <div class="mini-box">
+              <strong>Industry Value</strong>
+              Fast learner with practical engineering mindset and strong adaptability.
+            </div>
+            <div class="mini-box">
+              <strong>Special Interest</strong>
+              UAV development, power systems, automation, and energy-efficient technology.
+            </div>
+            <div class="mini-box">
+              <strong>Career Goal</strong>
+              Join an engineering team where I can grow, contribute, and deliver results.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-intro">
+          I am a Computer Engineer with a growing background in engineering applications related to drones and solar systems.
+          I enjoy working on projects that connect hardware and software into useful systems, especially in areas involving
+          monitoring, control, power optimization, and intelligent design. I bring a disciplined, engineering-focused approach
+          to building technology that is both functional and ready for real-world use.
+        </p>
+        <div class="grid-2">
+          <div class="panel">
+            <h3>What I Bring</h3>
+            <ul>
+              <li>Strong foundation in computer engineering principles and electronics.</li>
+              <li>Interest in drone-related technologies, flight support systems, and system testing.</li>
+              <li>Knowledge of solar energy concepts and sustainable engineering solutions.</li>
+              <li>Ability to learn quickly, collaborate effectively, and adapt in technical environments.</li>
+            </ul>
+          </div>
+          <div class="panel" id="skills">
+            <h3>Technical Skills</h3>
+            <p>Customize these to match your real strengths before applying for jobs.</p>
+            <div class="skills">
+              <span class="skill-pill">Embedded Systems</span>
+              <span class="skill-pill">Microcontrollers</span>
+              <span class="skill-pill">Circuit Design</span>
+              <span class="skill-pill">Sensor Integration</span>
+              <span class="skill-pill">Drone Technology</span>
+              <span class="skill-pill">Solar Power Basics</span>
+              <span class="skill-pill">Troubleshooting</span>
+              <span class="skill-pill">Technical Documentation</span>
+              <span class="skill-pill">System Testing</span>
+              <span class="skill-pill">Programming Fundamentals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience & Engineering Exposure</h2>
+        <p class="section-intro">
+          This section is designed to present your background in a professional, job-ready format. Replace the sample content
+          below with your actual experience, internship details, thesis work, OJT, or freelance technical projects.
+        </p>
+        <div class="panel timeline">
+          <div class="timeline-item">
+            <div class="meta">Recent Experience</div>
+            <h4>Drone Engineering Exposure</h4>
+            <ul>
+              <li>Supported learning and practical exploration of drone components, flight systems, and operational workflows.</li>
+              <li>Studied integration of sensors, controllers, communication modules, and power systems in UAV applications.</li>
+              <li>Developed understanding of how drone technology can support mapping, inspection, monitoring, and automation tasks.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="meta">Technical Focus Area</div>
+            <h4>Solar Technology Exposure</h4>
+            <ul>
+              <li>Explored solar energy concepts including power generation, storage considerations, and efficient system usage.</li>
+              <li>Applied engineering thinking to sustainable systems and energy-aware technology solutions.</li>
+              <li>Built familiarity with how solar power can support independent, portable, and low-power engineering setups.</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="meta">Professional Strength</div>
+            <h4>Computer Engineering Practice</h4>
+            <ul>
+              <li>Worked on technical problem-solving involving electronics, computing systems, and practical design decisions.</li>
+              <li>Prepared to assist in prototyping, diagnostics, testing, system improvement, and project documentation.</li>
+              <li>Maintained a strong interest in learning industry tools, engineering standards, and real deployment workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-intro">
+          These sample project cards are written to make your profile look professional and relevant to engineering recruiters.
+          Edit the titles and details so they reflect your actual work.
+        </p>
+        <div class="projects">
+          <article class="project-card">
+            <span class="tag">Drone Project</span>
+            <h3>UAV Monitoring Concept</h3>
+            <p>
+              A concept-driven project focused on integrating sensors and control logic for drone-based monitoring applications.
+            </p>
+            <ul>
+              <li>System planning for data collection and field observation.</li>
+              <li>Exploration of lightweight electronics and communication flow.</li>
+              <li>Engineering approach for reliable and efficient operation.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="tag">Solar Project</span>
+            <h3>Solar-Assisted Engineering Setup</h3>
+            <p>
+              A project idea centered on supporting small electronic systems with solar energy for portable or off-grid use.
+            </p>
+            <ul>
+              <li>Focus on power efficiency and sustainable operation.</li>
+              <li>Use case for remote electronics or outdoor systems.</li>
+              <li>Practical design thinking for future renewable applications.</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <span class="tag">Computer Engineering</span>
+            <h3>Embedded Control Prototype</h3>
+            <p>
+              A hardware-software integration prototype demonstrating engineering fundamentals in automation and control.
+            </p>
+            <ul>
+              <li>Sensor input and microcontroller-based response logic.</li>
+              <li>Testing, troubleshooting, and optimization workflow.</li>
+              <li>Documentation prepared in a project-focused engineering format.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <h2 class="section-title">Let's Build Something Valuable</h2>
+          <p>
+            I am actively seeking opportunities where I can contribute as a Computer Engineer in roles involving
+            electronics, drone systems, renewable energy, embedded design, or technical field support.
+            I am ready to bring dedication, technical curiosity, and a strong engineering mindset to your team.
+          </p>
+          <div class="cta-group" style="justify-content:center;">
+            <a href="mailto:your.email@example.com" class="btn btn-primary">Email Me</a>
+            <a href="https://www.linkedin.com/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Reyvem Johnson C. • Computer Engineer Portfolio</p>
+    </div>
+  </footer>
+</body>
+</html>
